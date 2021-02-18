@@ -6,7 +6,7 @@
 ### 2、在openresty的nginx.conf中新增
 - http内 include vhost/*.conf;  引入conf文件
 ### 3、创建db和表、新增数据
-create database ·dwc-admin·;
+create database `dwc-admin`;
 CREATE TABLE `t_article` (
   `id` bigint(11) NOT NULL,
   `content` text COLLATE utf8_unicode_ci,
