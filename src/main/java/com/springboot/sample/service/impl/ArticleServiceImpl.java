@@ -13,10 +13,13 @@ public class ArticleServiceImpl implements IArticleService {
     @Resource
     private ArticleMapper articleMapper;
 
+    private int count = 0;
+
     @Override
     public String detail(Long id) {
-        int random = (int) Math.random() * 1000;
-        Article article = articleMapper.findById(random, id);
+        count++;
+        Article article = articleMapper.findById(count, id);
+//        Article article = articleMapper.selectById(id);
         if (null != article) {
             return article.getContent();
         } else {
