@@ -1,10 +1,10 @@
 package com.springboot.sample.bean;
 
-import com.baomidou.mybatisplus.annotation.TableName;
+//import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName("t_article")
+//@TableName("t_article")
 public class Article {
     /** id **/
     private Long id;

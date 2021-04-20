@@ -19,12 +19,19 @@
 	</properties>
 
 	<dependencies>
-		<!--mybatis plus-->
 		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>4.5.6</version>
+		</dependency>
+
+		<!--mybatis plus-->
+		<!--<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.4.2</version>
-		</dependency>
+		</dependency>-->
+
 		<!--mysql数据库驱动-->
 		<dependency>
 			<groupId>mysql</groupId>

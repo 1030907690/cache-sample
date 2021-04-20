@@ -18,7 +18,8 @@ public class ArticleServiceImpl implements IArticleService {
     @Override
     public String detail(Long id) {
         count++;
-        Article article = articleMapper.findById(count, id);
+        Article article = articleMapper.findById(count,id + count);
+//        Article article = articleMapper.findByIdCache(id);
 //        Article article = articleMapper.selectById(id);
         if (null != article) {
             return article.getContent();
