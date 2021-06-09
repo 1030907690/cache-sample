@@ -19,3 +19,48 @@ INSERT INTO `dwc-admin`.`t_article`(`id`, `content`) VALUES (1, '<p>\r\n	Think D
 ### 访问
 - http://localhost:8080/article/detail?id=1
 - http://localhost:84/article/detail?id=1
+
+
+
+
+```
+
+server {
+        listen       8087;
+        server_name  localhost;
+		  lua_code_cache off;
+		 location / {
+		 resolver 8.8.8.8;
+           default_type text/html;
+			# lua文件的路径
+			set $request_base_uri 'http://spider.ngrok.findourlove.com';
+			content_by_lua_file conf/lua_src/api_result.lua;
+        }
+}
+
+local uri =  ngx.var.request_uri;
+local uriArgs = ngx.req.get_uri_args() 
+local request_method = ngx.var.request_method
+local cjson = require "cjson"
+local http = require("resty.http") -- 引入resty.http模块
+local httpc = http.new() -- 创建对象
+local data = nil
+if "GET" == request_method then
+
+	local resp, err = httpc:request_uri(ngx.var.request_base_uri..uri,{method = "GET",keepalive = false}) -- 发起请求
+	data = cjson.decode(resp.body);
+elseif "POST" == request_method then
+	ngx.say(uri)
+	
+end
+
+-- 增加code返回
+--if data['Status'] == 1 then
+--	data['code'] = 0
+--else
+--	data['code'] = 1
+--end
+-- 返回
+--ngx.say(cjson.encode(data))
+
+```
